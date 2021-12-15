@@ -13,13 +13,16 @@ def sin_cos(phi):
     x = K
     y = 0
     for i in range(0, 20):
-        x, y = x - math.copysign(1, beta) * y * pow(2,-i), y + math.copysign(1, beta) * x * pow(2,-i)
+        new_x = x - math.copysign(1, beta) * y * pow(2,-i)
+        new_y = y + math.copysign(1, beta) * x * pow(2,-i)
+        x, y = new_x, new_y
         beta = beta - math.copysign(1, beta) * gamma_values[i]
-        print("\nx=",x,"\ny=",y)
+        # print("\nx=",x,"\ny=",y)
     cos, sin = x, y
     return sin, cos
 
-x = 1.57079632679
-sinx, cosx = sin_cos(x)
-print (sinx, cosx)
-print (math.sin(x), math.cos(x))
+# x = -0.166
+# x = (-0.5)*math.pi
+# sinx, cosx = sin_cos(x)
+# print ('\n', sinx, cosx)
+# print (math.sin(x), math.cos(x), '\n')
