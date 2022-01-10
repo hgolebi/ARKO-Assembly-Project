@@ -1,12 +1,13 @@
 from math import atan, tan
 from converter import tobin1
 
-angles = [atan(pow(2, -n)) for n in range (0, 20)]
+angles = [atan(pow(2, -n)) for n in range (0, 30)]
 tans = [tan(ang) for ang in angles]
 print(angles)
 bin_angles = []
 for ang in angles:
     bin_angles.append(tobin1(ang))
+print(bin_angles)
 
 formated = ''
 i = 0

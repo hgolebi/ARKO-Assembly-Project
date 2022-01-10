@@ -69,9 +69,4 @@ def tofloat2(bin):
         number += num * pow(2, -i+1)
     return number
 
-num = (-0.5)*math.pi
-num = -0.166
-bin = tobin1(num)
-hex = tohex1(num)
-print(bin)
-print(hex)
+
