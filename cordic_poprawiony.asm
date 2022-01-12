@@ -11,17 +11,22 @@ gamma:	.word	# gamma values
 	0x000028BE, 0x0000145F, 0x00000A2F, 0x00000517,
 const: 	.word 0x26DD3B6A	#constant K = 0.60725293500925
 
+	# input format:
+	# -1, 1/2, 1/4, 1/8, 1/16, 1/32, 1/64, 1/128
+	# output format:
+	# -2, 1, 1/2, 1/4, 1/8, ...
+
 	.text
 main:
 	li 	$v0, 4
 	la	$a0, inimsg	# print initial msg
 	syscall
-	li 	$v0, 5		# load Phi argument
+	li 	$v0, 5		# load Phi argument (int representing 8 most significant bits)
 	syscall
 	sll	$s1, $v0, 24	# Beta = Phi
 	lw	$s2, const	# x = K
-	and	$s3, $s3, $zero	# y = 0
-	and	$s0, $s0, $zero	# i = 0
+	move	$s3, $zero	# y = 0
+	move	$s0, $zero	# i = 0
 	la	$s7, gamma	# gamma[i] address
 
 loop:
